@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+*{box-sizing: border-box; margin: 0; padding: 0; 
+    /* border: 1px solid red; */
+}
+:root {
+    --dark: #1d1d1d;
+    --grey-dark: #414141;
+    --light: #fff;
+    --mid: #ededed;
+    --grey: #989898;
+    --green: #28a92b;
+    --green-dark: #4e9815;
+    --green-light: #6fb936;
+    --blue: #2c7ad2;
+    --purple: #8d3dae;
+    --red: #c82736;
+    --orange: #e77614;
+    accent-color: var(--green);
+  }
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--mid);
+    color: #333;
+    line-height: 1.6;
+    font-family: "Jura", sans-serif;   
+     text-transform: capitalize;
+     
+}
+
+/* latest order  */
+.latest-order{
+    background: linear-gradient(300deg,var(--grey-dark),var(--dark),var(--grey));
+  background-size: 300% 300%;
+  animation: gradient-animation 30s ease infinite;
+    border-radius: 1rem;
+    overflow: auto;
+
+}
+.latest-order h1{
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    text-shadow:#ffffff9e 0 0 10px;
+}
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+.latest-order-card {
+    background-image: url(../img/baked1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2rem;
+    height: 16rem;
+}
+.in-stock{
+    color: #FFFFFFA3;
+}
+
+.latest-order-card-body h5{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.6rem;
+    background-color: #333333d4;
+    border-radius: 1rem;
+}
+.latest-order-card span{
+  background: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.1px);
+  -webkit-backdrop-filter: blur(7.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 0.3rem;
+  margin: 0.5rem;
+  width: 5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: var(--green-light);
+}
+/* product details */
+.product-section{
+    background: #1d1d1d48;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+}
+.card-main-product {
+    background-color: transparent;
+}
+.card-main-product{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
+    background-color: var(--dark);    
+    width: 15rem;
+    border-radius: 0.5rem;
+    color: #fff;
+}
+.card-main-product:hover{
+    scale: 1.1;
+    height: 17em;
+    cursor: pointer;
+}
+.card-main-product:hover  .card-content{
+transition: .4s ease-in-out;
+ transform: translateY(1rem);
+ /* transform: scale(1.1); */
+}
+.card-content-image{
+    background-image: url(../img/baked1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    height: 16rem;
+    position: relative;
+    top: -18px;
+    width: 13rem;
+    left: 0;
+    margin: 0 auto;
+    height: 11rem;
+    transition: .5s ease-in-out;
+
+}
+
+.product-price>span{    
+    position: absolute;
+    color: #fff;
+    padding: 0.5rem;
+    margin: 0 2rem;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: var(--green-light);
+    font-weight: bold;
+    border-radius: 1rem;
+    z-index: 1;
+}
+
+@media screen and (max-width: 768px){
+    .card-main-product{
+        width: 17rem;
+        margin: auto;
+    }
+    
+}
+/* cart */
+
+.cart::before{
+    content: '';
+    position: absolute;
+    background: linear-gradient(45deg,#aaa,#fff);
+    width: 100%;
+    padding: 1rem 1rem 2rem;
+    --mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/30px 100%;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    background: var(--dark);
+    top: -28px;
+    left: 0;
+    transform: rotate(180deg);
+}
+.cart::after{
+    content: '';
+    position: absolute;
+    background: linear-gradient(45deg,#aaa,#fff);
+    width: 100%;
+    padding: 1rem 1rem 2rem;
+    --mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/30px 100%;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    background: var(--dark);
+    bottom: -3rem;
+    right: 0;
+}
+.cart {
+    background-color:var(--dark) ;
+    color: var(--dark);
+    padding: 2rem;
+    position: relative;
+    height: 40rem;
+}
+
+.cart-img>img{
+    width:4rem;
+    border-radius: 2rem;
+}
+.cart-room{
+    border-bottom: 3.2px dashed var(--gray);
+}
+.cart-submit button{
+    background-color: var(--green-dark); 
+    color: #fff;
+    border: none;
+    transition: ease 0.3s;
+
+}
+.cart-submit button:hover{
+    background-color:var(--green) ;
+    color: var(--mid);
+    cursor: pointer;
+    
+}
+
+.cart-submit button:focus ,.cart-close button:focus{
+    box-shadow: none;
+
+}
+
+
+.cart-quantity .btn {
+    background-color: var(--green-dark);
+    color: #fff;
+    border: none;
+    transition: ease 0.3s;
+    cursor: pointer;
+}
+
+.cart-quantity .btn:hover {
+    background-color: var(--green);
+    color: var(--mid);
+}
+
+.cart-quantity .btn:focus {
+    box-shadow: none;
+    transform: scale(0.9);
+}
+
+.cart-quantity input[type="number"] {
+    width: 5rem;
+    text-align: center;
+    border: 1px solid var(--gray);
+}
+.cart-quantity > input[type=number]::-webkit-inner-spin-button,
+.cart-quantity >input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
