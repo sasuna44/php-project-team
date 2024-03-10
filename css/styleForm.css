@@ -1,0 +1,118 @@
+
+  :root {
+    --dark: #1d1d1d;
+    --grey-dark: #414141;
+    --light: #fff;
+    --mid: #ededed;
+    --grey: #989898;
+    --gray: #989898;
+    --green: #28a92b;
+    --green-dark: #4e9815;
+    --green-light: #6fb936;
+    --blue: #2c7ad2;
+    --purple: #8d3dae;
+    --red: #c82736;
+    --orange: #e77614;
+    accent-color: var(--green);
+}
+
+body {
+background-color: var(--dark);
+padding-top: 80px;
+background-image: 
+linear-gradient(rgba(255, 255, 255, 0.07) 2px, transparent 2px),
+linear-gradient(90deg, rgba(255, 255, 255, 0.07) 2px, transparent 2px),
+linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+background-size: 100px 100px;
+height: 100vh;
+}
+
+.navbar {
+  background-color: #748E63;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    color: #2E7D32;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2E7D32;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.main-padding {
+    padding: 20px 0;
+}
+
+.user-orders {
+    margin-top: 20px;
+}
+
+.total-price {
+    margin-top: 20px;
+    border-top: 2px solid #dee2e6;
+    padding-top: 10px;
+    font-size: 1.2em;
+}
+
+
+td {
+    text-align: center;
+}
+
+
+label,h1,h5 {
+    color: #ffffff;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+
+
+button.btn {
+  width: 25%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color:#748E63; 
+  border: none;
+  color: white;
+  margin: 5px;
+}
+
+button.btn:hover {
+  background-color: #2E7D32; 
+  color: white;
+}
+
+button.btn:active{
+  background-color: #748E63;
+  outline: none;
+  border-color: #ced4da;
+}
+  
+  /* لون خلفية المودال */
+  .modal-content {
+    background-color: #1d1d1d;
+  }
+  #addCategoryLink{
+    text-decoration: none;
+  }
