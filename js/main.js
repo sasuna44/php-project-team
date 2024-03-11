@@ -1,38 +1,31 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const decreaseBtn = document.querySelector('.decrease-btn');
-    const increaseBtn = document.querySelector('.increase-btn');
-    const quantityInput = document.getElementById('quantityInput');
-    const closeButtons = document.querySelectorAll('.close-btn');
+function decreaseQuantity(key) {
+    const input = document.getElementById('quantity_' + key);
+    let value = parseInt(input.value, 10);
+    value = isNaN(value) ? 1 : value;
+    if (value > 1) {
+        value--;
+        input.value = value;
+        updateTotalPrice();
+    }
+}
 
-    decreaseBtn.addEventListener('click', function() {
-        let currentValue = parseInt(quantityInput.value);
-        if (!isNaN(currentValue) && currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        }
-    });
+function increaseQuantity(key) {
+    const input = document.getElementById('quantity_' + key);
+    let value = parseInt(input.value, 10);
+    value = isNaN(value) ? 1 : value;
+    value++;
+    input.value = value;
+    updateTotalPrice();
+}
 
-    increaseBtn.addEventListener('click', function() {
-        let currentValue = parseInt(quantityInput.value);
-        if (!isNaN(currentValue)) {
-            quantityInput.value = currentValue + 1;
-        } else {
-            quantityInput.value = 1;
-        }
+function updateTotalPrice() {
+    let total = 0;
+    document.querySelectorAll('.cart-card').forEach(function(card) {
+        const price = parseFloat(card.querySelector('.cart-price span').innerText.replace('$', ''));
+        const quantity = parseInt(card.querySelector('.cart-quantity input').value, 10);
+        total += price * quantity;
     });
+    document.getElementById('total-price').innerText = total.toFixed(2);
+}
 
-    quantityInput.addEventListener('change', function() {
-        let currentValue = parseInt(quantityInput.value);
-        if (isNaN(currentValue) || currentValue < 1) {
-            quantityInput.value = 1;
-        }
-    });
-
-    closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const cartCard = this.closest('.cart-card');
-            if (cartCard) {
-                cartCard.remove();
-            }
-        });
-    });
-});
+updateTotalPrice();
