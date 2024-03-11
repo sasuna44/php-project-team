@@ -2,40 +2,28 @@
 session_start();
 require 'dbconnection.php';
 $db = new db();
+echo"<pre>";
+var_dump($_POST);
+echo"</pre>";
 
 if(isset($_POST['submit_order'])) {
     if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+        $cart = $_SESSION['cart'];
         $notes = $_POST['notes'];
         $roomSelection = $_POST['room_selection'];
-        $totalPrice = $_POST['total_price'];
-
-        
-
+        $quantity = $_POST['quantity'];
+        $product_name = $_POST['product_name'];
         $orderData = [
+            'quantity' =>$quantity,
+            'product_name'=>$product_name,
             'notes' => $notes,
             'room_selection' => $roomSelection,
-            'total_price' => $totalPrice
         ];
-
-       // $orderId = $db->insert_data('orders', array_keys($orderData), array_values($orderData));
-
-        foreach($_SESSION['cart'] as $item) {
-            $orderItemData = [
-                'product_id' => $item['product_id'],
-                'quantity' => $item['quantity'],
-                'total_price' => $item['total_price'],
-            ];
-            echo"<pre>";
-            var_dump($orderData);
-            echo"</pre>";
-//$db->insert_data('order_items', array_keys($orderItemData), array_values($orderItemData));
-        }
-
+        echo"<pre>";
+        var_dump($orderData);
+        echo"</pre>";
         unset($_SESSION['cart']);
-
-        echo "Order placed successfully!";
-    } else {
-        echo "Your cart is empty.";
-    }
+        header('Location: user.php');
+    }  
 }
 ?>

@@ -101,10 +101,8 @@ if(isset($_POST['add_to_cart'])){
                     <div class="container">
                         <div class="row">
                             <div class="product-section">
-                                <div class="row justify-content-between flex-wrap">
+                                <div class="row justify-content-between flex-wrap row-product">
                                     <?php
-                                     
-
                                         $result = $db->get_data('products');
                                         while ($row = $result->fetch_assoc()) {
                                             echo '<div class="col-sm-12 col-md-6 col-lg-4 my-4  p-0">';
@@ -140,18 +138,19 @@ if(isset($_POST['add_to_cart'])){
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-5 p-5 ">
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-5 pt-5">
                 <div class="cart-section">
-                    <div class="cart d-flex flex-column justify-content-evenly">
+                    <div class="cart d-flex flex-column justify-content-around flex-wrap ">
                         <h1 class="text-center text-light">check out cart</h1>
                         <div class="cart-items" id="cart-items">
                         <form method="POST" action="ordered.php">
     <?php
     if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])){
         foreach($_SESSION['cart'] as $key => $item){
-            echo '<div class="card cart-card d-flex justify-content-evenly flex-row align-items-center mb-2">';
-            echo '    <div class="cart-img d-flex flex-column m-2 ">';
-            echo'          <span >'.$item['product_name'].'</span>';
+            echo '<div class="card cart-card d-flex justify-content-around flex-row  gap-1 align-items-center mb-2">';
+            echo '    <div class="cart-img d-flex flex-column align-items-center  m-2 ">';
+            echo '       <input type="hidden" name="product_name[]" value="' . $item['product_name'] . '">';
+            echo'          <span class="text-center" >'.$item['product_name'].'</span>';
             echo '        <img src="img/' . $item['product_image'] . '" alt="' . $item['product_name'] . '">';
             echo '    </div>';
             echo '    <div class="cart-quantity d-flex gap-1">';
@@ -160,9 +159,9 @@ if(isset($_POST['add_to_cart'])){
             echo '        <button type="button" class="btn increase-btn" onclick="increaseQuantity(' . $key . ',' . $item['product_price'] . ')">+</button>';
             echo '    </div>';
             echo '    <div class="cart-price">';
-            echo '        <span>$' . $item['product_price'] . '</span>';
+            echo '        <span class="fw-bolder">$' . $item['product_price'] . '</span>';
             echo '    </div>';
-            echo '    <div class="cart-close">';
+            echo '    <div class="cart-close ">';
             echo '          <a href="user.php?action=remove&product_id=' . $item['product_id'] . '">';
             echo '            <button type="button" class="btn close-btn bg-danger text-light"> Remove </button>';
             echo '        </a>';
@@ -189,7 +188,6 @@ if(isset($_POST['add_to_cart'])){
             <option value="4">Room 4</option>
         </select>
     </div>
-    <input type="hidden" id="total-price-input" name="total_price" value="<?php echo $totalPrice; ?>">
     <div class="cart-total-price mb-2 text-light">
         <h3>Total Price: $<span id="total-price" name="total_price"><?php echo $totalPrice; ?></span></h3>
     </div>
@@ -215,10 +213,13 @@ if(isset($_POST['add_to_cart'])){
             foreach($_SESSION['cart'] as $key => $item){
                 echo 'totalPrice += ' . $item['product_price'] . ' * ' . $item['quantity'] . ';';
             }
+        }else{
+            echo 'totalPrice = 0;';
         }
+        
         ?>
-        document.getElementById('total-price').innerText = totalPrice.toFixed(2);
-        document.getElementById('total-price-input').value = totalPrice.toFixed(2);
+        const totalPriceSpan = document.getElementById('total-price');
+        totalPriceSpan.innerText = totalPrice;
     });
    function updateTotalPrice(key, price) {
         const quantityInput = document.getElementById('quantity_' + key);
