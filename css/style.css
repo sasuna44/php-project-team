@@ -19,9 +19,16 @@
   }
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: var(--mid);
-    color: #333;
+    background-color: var(--dark);
+    padding-top: 80px;
+    background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.07) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 2px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 100px 100px;    color: #333;
     line-height: 1.6;
+    color: var(--light);
     font-family: "Jura", sans-serif;   
      text-transform: capitalize;
      
@@ -101,10 +108,21 @@ body{
 overflow: scroll;
   height: 50rem;
 }
+.row-product::-webkit-scrollbar {
+color:transparent;
+width: 0.5rem;
+}
+.row-product::-webkit-scrollbar-thumb {
+  background-color:transparent;
+  border-radius: 1rem;
+}
+.row-product::-webkit-scrollbar-track {
+  background-color:transparent;
+}
 .product-section{
-    background: #1d1d1d48;
+    background: #ffffff57;
     -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(-5px);
     border-radius: 1rem;
     padding: 2rem 0;
 }
@@ -121,10 +139,8 @@ overflow: scroll;
     width: 15rem;
     border-radius: 0.5rem;
     color: #fff;
-    height: 25rem;
-}
-.card-main-product:hover{
-    scale: 1.1;
+    height: 23rem;
+
 }
 .card-main-product:hover  .card-content{
 transition: .4s ease-in-out;
@@ -190,10 +206,11 @@ transition: .4s ease-in-out;
     background: linear-gradient(45deg,#aaa,#fff);
     width: 100%;
     padding: 1rem 1rem 2rem;
-    --mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/30px 100%;
+    --mask: conic-gradient(from -45deg at bottom,#fff,#fff
+     1deg 89deg,#ffffff00 90deg) 50%/30px 100%;
     -webkit-mask: var(--mask);
     mask: var(--mask);
-    background: var(--dark);
+    background: var(--light);
     top: -28px;
     left: 0;
     transform: rotate(180deg);
@@ -204,24 +221,29 @@ transition: .4s ease-in-out;
     background: linear-gradient(45deg,#aaa,#fff);
     width: 100%;
     padding: 1rem 1rem 2rem;
-    --mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/30px 100%;
+    --mask: conic-gradient(from -45deg at bottom,#fff,#fff
+     1deg 89deg,#ffffff00 90deg) 50%/30px 100%;
     -webkit-mask: var(--mask);
     mask: var(--mask);
-    background: var(--dark);
-    bottom: -3rem;
-    right: 0;
+    background: var(--light);
+    bottom: -24px;
+    left: 0;
 }
 .cart {
-    background-color:var(--dark) ;
+    background-color:var(--light) ;
     color: var(--dark);
     padding: 2rem 0.5rem;
     position: relative;
     height: auto;
 }
-
+.cart-card {
+    background-color: var(--dark);
+    color: var(--light);
+    border-radius: 0.5rem;
+}
 .cart-img>img{
     width:4rem;
-    border-radius: 2rem;
+    border-radius: 0.2rem;
 }
 .cart-room{
     border-bottom: 3.2px dashed var(--gray);

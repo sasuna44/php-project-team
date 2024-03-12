@@ -99,9 +99,9 @@ if(isset($_POST['add_to_cart'])){
                         <!-- end-latest-ordered-card -->
                     </div>
                 </div>
-                <div class="row m-4">
+                <div class="row m-2">
                     <div class="container">
-                        <div class="row">
+                        <div class="row gx-0">
                             <div class="product-section">
                                 <div class="row justify-content-between flex-wrap row-product gx-0">
                                     <div class="row justify-content-center align-items-center gx-0 ">                                  
@@ -146,10 +146,10 @@ if(isset($_POST['add_to_cart'])){
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-5 pt-5">
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-5 pt-5 px-4">
                 <div class="cart-section">
                     <div class="cart d-flex flex-column justify-content-around flex-wrap ">
-                        <h1 class="text-center text-light">check out cart</h1>
+                        <h1 class="text-center">check out cart</h1>
                         <div class="cart-items" id="cart-items">
                         <form  id="orderForm"method="POST" action="ordered.php">
                         <?php
@@ -176,20 +176,20 @@ if(isset($_POST['add_to_cart'])){
                                 echo '</div>';
                             }
                         } else {
-                            echo '<p class="text-center text-light">Your cart is empty.</p>';
+                            echo '<p class="text-center">Your cart is empty.</p>';
                         }
                         ?>
                         </div>
                         <div class="cart-notes mb-2">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="" name="notes" id="floatingTextarea2" style="height: 100px" oninput="validateNotes()"></textarea>
+                                <textarea class="form-control" placeholder="" name="notes" id="floatingTextarea2" style="height: 100px ;border: 1px solid var(--dark);" oninput="validateNotes()"></textarea>
                                 <label for="floatingTextarea2">Notes</label>
                                 <p id="notesError" style="color:red;"></p>
 
                             </div>
                         </div>
-                        <div class="cart-room mb-2 text-light">
-                            <span>Room</span>
+                        <div class="cart-room mb-2">
+                            <span class="fw-bolder">Room</span>
                             <select name="room_selection" class="m-3">
                                 <option value="0"> No Room</option>
                                 <option value="1">Room 1</option>
@@ -198,7 +198,7 @@ if(isset($_POST['add_to_cart'])){
                                 <option value="4">Room 4</option>
                             </select>
                         </div>
-                        <div class="cart-total-price mb-2 text-light">
+                        <div class="cart-total-price mb-2">
                             <h3>Total Price: $<span id="total-price" name="total_price"><?php echo $totalPrice; ?></span></h3>
                         </div>
                         <div class="cart-submit mb-2 text-center">
@@ -300,7 +300,10 @@ if(isset($_POST['add_to_cart'])){
         var error = document.getElementById('notesError');
         var sqlKeywords = ['SELECT', 'UPDATE', 'DELETE', 'INSERT', 'DROP', 'ALTER', 'CREATE', 'TRUNCATE',
                    'select', 'update', 'delete', 'insert', 'drop', 'alter', 'create', 'truncate'];
-
+            if (notes.length < 10) {
+                error.innerHTML = 'Notes must be at least 10 characters';
+                return;
+            }
             for (var i = 0; i < sqlKeywords.length; i++) {
                 if (notes.toUpperCase().includes(sqlKeywords[i])) {
                     error.innerHTML = 'Notes cannot contain SQL queries';
