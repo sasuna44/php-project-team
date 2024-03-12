@@ -103,11 +103,16 @@ if(isset($_POST['add_to_cart'])){
                     <div class="container">
                         <div class="row">
                             <div class="product-section">
-                                <div class="row justify-content-between flex-wrap row-product">
+                                <div class="row justify-content-between flex-wrap row-product gx-0">
+                                    <div class="row justify-content-center align-items-center gx-0 ">                                  
+                                          <h1 class="text-center "style="width: 21rem;">Products</h1>
+                                         <input class="form-control me-2" style="width: 21rem;" type="search" name="product-search" id="product_search" placeholder="Search" aria-label="Search">
+                                    </div>
+
                                     <?php
                                         $result = $db->get_data('products');
                                         while ($row = $result->fetch_assoc()) {
-                                            echo '<div class="col-sm-12 col-md-6 col-lg-4 my-4  p-0">';
+                                            echo '<div class="col-sm-12 col-md-6 col-lg-4 my-4  p-0 product-col">';
                                             echo '<div class="card card-main-product m-auto border-0">';
                                             echo ' <div class="card-content">';
                                             echo '     <div class="product-price">';
@@ -126,7 +131,8 @@ if(isset($_POST['add_to_cart'])){
                                             echo '             <input type="hidden" value="' . $row['product_name'] . '" name="product_name" />';
                                             echo '             <input type = "hidden" value="' . $row['product_image'] . '" name="product_image" />';
                                             echo '             <input type = "hidden" value="' . $row['product_price'] . '" name="product_price" />';
-                                            echo '             <button type="submit" name="add_to_cart" class="btn my-3 add-to-cart-btn">Add to cart</button>';                                            echo '          </div>';
+                                            echo '             <button type="submit" name="add_to_cart" class="btn my-3 add-to-cart-btn">Add to cart</button>';                                           
+                                             echo '          </div>';
                                             echo '             </form>';
                                             echo '     </div>';
                                             echo ' </div>';
@@ -164,11 +170,9 @@ if(isset($_POST['add_to_cart'])){
                                 echo '    <div class="cart-price">';
                                 echo '        <span class="fw-bolder">$' . $item['product_price'] . '</span>';
                                 echo '    </div>';
-                                echo '    <div class="cart-close ">';
-                                echo '          <a href="user.php?action=remove&product_id=' . $item['product_id'] . '">';
-                                echo '            <button type="button" class="btn close-btn bg-danger text-light"> Remove </button>';
-                                echo '        </a>';
-                                echo '    </div>';
+                                echo '    <div class="cart-close">';
+                                echo '            <button type="button" class="btn close-btn bg-danger text-light" onclick="removeFromCart(' . $item['product_id'] . ')"> Remove </button>';
+                                 echo '    </div>';
                                 echo '</div>';
                             }
                         } else {
@@ -306,6 +310,24 @@ if(isset($_POST['add_to_cart'])){
             error.innerHTML = '';
         
     }
+    function removeFromCart(product_id) {
+        window.location.href = 'user.php?action=remove&product_id=' + product_id;
+    }
+    document.getElementById('product_search').addEventListener('keyup', function() {
+                                            var input, filter, cards, cardContainer, h5, title, i;
+                                            input = document.getElementById("product_search");
+                                            filter = input.value.toUpperCase();
+                                            cardContainer = document.getElementsByClassName("row-product");
+                                            cards = cardContainer[0].getElementsByClassName(" product-col");
+                                            for (i = 0; i < cards.length; i++) {
+                                                title = cards[i].querySelector(".card-content-details h6");
+                                                if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                                                    cards[i].style.display = "";
+                                                } else {
+                                                    cards[i].style.display = "none";
+                                                }
+                                            }
+                                        });
 </script>
 </body>
 </html>
