@@ -261,9 +261,15 @@ transition: .4s ease-in-out;
     /* transform: scale(0.9); */
 }
 
-.cart-quantity input[type="number"] {
+.cart-quantity>input[type="number"] {
     width: 5rem;
     text-align: center;
     border: 1px solid var(--gray);
+    appearance: textfield;
 }
 
+
+
+.cart-quantity>input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
