@@ -43,13 +43,14 @@ $mysqli->close();
     <title>Check Email</title>
     <!-- Add Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styleForm.css">
 </head>
 <body>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form id="checkEmailForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="border p-4 rounded">
-                    <h2 class="mb-4">Check Email</h2>
+                    <h2 class="mb-4" style="color:white">Check Email</h2>
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required class="form-control">

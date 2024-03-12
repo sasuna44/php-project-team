@@ -59,6 +59,7 @@ if ($id) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styleForm.css">
     <style>
         .input-group-password {
             position: relative;
@@ -79,8 +80,8 @@ if ($id) {
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2>Update Password</h2>
-                <p>Please update your password for email: <?php echo $email; ?></p>
+                <h2 style="color:white">Update Password</h2>
+                <p style="color:white">Please update your password for email: <?php echo $email; ?></p>
                 <form id="updatePasswordForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $id; ?>">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-group">
@@ -88,7 +89,7 @@ if ($id) {
                         <div class="input-group input-group-password">
                             <input type="password" class="form-control" id="password" name="password" >
                             <div class="input-group-append password-toggle" id="togglePassword">
-                                <i class="fas fa-eye"></i>
+                                <i class="fas fa-eye" style="color:white"   ></i>
                             </div>
                         </div>
                         <small class="text-danger" id="passwordError"></small>
@@ -98,7 +99,7 @@ if ($id) {
                         <div class="input-group input-group-password">
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password" >
                             <div class="input-group-append password-toggle" id="toggleConfirmPassword">
-                                <i class="fas fa-eye"></i>
+                                <i class="fas fa-eye" style="color:white"></i>
                             </div>
                         </div>
                         <small class="text-danger" id="confirmPasswordError"></small>
