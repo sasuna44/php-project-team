@@ -3,6 +3,14 @@ require 'dbconnection.php';
 $db = new db();
 session_start();
 
+
+
+if(isset($_POST['submit_order'])) {
+    $_SESSION['cart'] = $_POST['product_id']; 
+    $_SESSION['notes'] = $_POST['notes'];
+    $_SESSION['room_selection'] = $_POST['room_selection'];
+
+}
 if(isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['product_id'])){
     $product_id = $_GET['product_id'];
 
@@ -13,6 +21,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['product
         }
     }
 }
+
 if(isset($_POST['add_to_cart'])){
     $product_id = $_POST['product_id'];
     $product_name = $_POST['product_name'];
@@ -66,7 +75,7 @@ if(isset($_POST['add_to_cart'])){
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row m-4">
                     <div class="latest-order d-flex flex-row align-items-center gap-4 p-4">   
@@ -146,19 +155,20 @@ if(isset($_POST['add_to_cart'])){
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 mt-5 pt-5 px-4">
+            <div class="col-sm-12 col-md-6 col-lg-4 mt-5 pt-5">
                 <div class="cart-section">
                     <div class="cart d-flex flex-column justify-content-around flex-wrap ">
                         <h1 class="text-center">check out cart</h1>
                         <div class="cart-items" id="cart-items">
                         <form  id="orderForm"method="POST" action="ordered.php">
                         <?php
+                        
                         if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])){
                             foreach($_SESSION['cart'] as $key => $item){
                                 echo '<div class="card cart-card d-flex justify-content-around flex-row  gap-1 align-items-center mb-2">';
                                 echo '    <div class="cart-img d-flex flex-column align-items-center  m-2 ">';
                                 echo '       <input type="hidden" name="product_id[]" value="' . $item['product_id'] . '">';
-                                echo '       <input type="hidden" name="product_name[]" value="' . $item['product_name'] . '">';
+                                echo '       <input type="hidden" name="productr_name[]" value="' . $item['product_name'] . '">';
                                 echo'          <span class="text-center" >'.$item['product_name'].'</span>';
                                 echo '        <img src="img/' . $item['product_image'] . '" alt="' . $item['product_name'] . '">';
                                 echo '    </div>';
@@ -178,7 +188,7 @@ if(isset($_POST['add_to_cart'])){
                         } else {
                             echo '<p class="text-center">Your cart is empty.</p>';
                         }
-                        ?>
+                      ?>
                         </div>
                         <div class="cart-notes mb-2">
                             <div class="form-floating">
@@ -331,6 +341,44 @@ if(isset($_POST['add_to_cart'])){
                                                 }
                                             }
                                         });
+
+                                        document.getElementById('floatingTextarea2').addEventListener('input', function() {
+                                localStorage.setItem('notes', this.value);
+                            });
+
+                            window.onload = function() {
+                                let savedNotes = localStorage.getItem('notes');
+                                let savedRoomSelection = localStorage.getItem('room_selection');
+                                let cartIsEmpty = <?php echo empty($_SESSION['cart']) ? 'true' : 'false'; ?>;
+
+                                if (cartIsEmpty) {
+                                    localStorage.removeItem('notes');
+                                    localStorage.removeItem('room_selection');
+                                    document.getElementById('floatingTextarea2').value = ''; 
+                                    document.querySelector('select[name="room_selection"]').value = '0';
+                                } else {
+                                    if (savedNotes) {
+                                        document.getElementById('floatingTextarea2').value = savedNotes;
+                                    }
+
+                                    if (savedRoomSelection) {
+                                        document.querySelector('select[name="room_selection"]').value = savedRoomSelection;
+                                    }
+                                }
+                                
+                                document.querySelector('select[name="room_selection"]').addEventListener('change', function() {
+                                    localStorage.setItem('room_selection', this.value);
+                                });
+                            };
+
+                            document.getElementById('orderForm').addEventListener('submit', function() {
+                                localStorage.removeItem('notes');
+                                localStorage.removeItem('room_selection');
+                            });
+
+                            document.getElementById('floatingTextarea2').addEventListener('input', function() {
+                                localStorage.setItem('notes', this.value);
+                            });
 </script>
 </body>
 </html>

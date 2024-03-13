@@ -14,7 +14,7 @@ if(isset($_POST['submit_order']) && !empty($_SESSION['cart'])) {
     // Insert into orders
     $user_id = 8;
     $ext_number = 1;
-    var_dump($orderData);
+    var_dump($orderData['notes']);
 
     $query = "INSERT INTO orders (user_id, notes, room_number, ext_number) VALUES (?, ?, ?, ?)";
     $stmt = $db->get_connection()->prepare($query);
@@ -28,7 +28,8 @@ if(isset($_POST['submit_order']) && !empty($_SESSION['cart'])) {
 
     // Clear the cart   
     $_SESSION['cart'] = [];
-    header('Location: user.php');
+
+    // header('Location: user.php');
     exit(); 
 }
 ?>
