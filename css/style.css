@@ -1,0 +1,299 @@
+:root {
+  --dark: #1d1d1d;
+  --grey-dark: #414141;
+  --light: #fff;
+  --mid: #ededed;
+  --grey: #989898;
+  --gray: #989898;
+  --green: #28a92b;
+  --green-dark: #4e9815;
+  --green-light: #6fb936;
+  --blue: #2c7ad2;
+  --purple: #8d3dae;
+  --red: #c82736;
+  --orange: #e77614;
+  accent-color: var(--green);
+}
+body {
+  background-color: #111;
+  font-family: "Signika Negative", sans-serif, Arial;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: white;
+}
+
+#smooth-wrapper{
+  width: 100%;
+}
+#smooth-content {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  /* set a height because the contents are position: absolute, thus natively there's no height */
+  height: 2200px;
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,255,255,.07) 2px, transparent 2px),
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
+#section1 ,#section2 {
+  height: 400px;
+  margin-top: 50px;
+  width: 1400px;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#section2{
+  height: 900px;
+}
+
+.navbar {
+  background-color: transparent !important; /* Set initial background color to transparent */
+  transition: background-color 0.3s ease;/* Transparent background color */
+
+}
+.navbar-scrolled {
+  background-color:#6fb936 !important; /* Change background color when scrolled */
+}
+.checks{
+  position: absolute;
+  margin-top: 100px;
+  width: 100%;
+}
+.checks h1{
+  font-size: 70px;
+  cursor: pointer;
+}
+.navbar-dark .navbar-brand {
+  color: #ffffff; /* Text color for navbar brand */
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff; /* Text color for navbar links */
+}
+form {
+ width: 800px;
+ 
+}
+.form-group {
+  margin-bottom: 20px;
+  
+}
+
+label {
+  font-weight: bold;
+}
+form input{
+  background-color: transparent;
+}
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+input[type="date"]::placeholder{
+  color: white;
+}
+input[type="date"]:focus {
+  background-color: transparent;
+  border: 2px solid #4e9815; 
+  outline: none; 
+}
+.form-control:focus{
+  outline: none;
+}
+button.btn {
+  width: 25%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color:#6fb936; 
+  border: none;
+  color: white;
+}
+
+button.btn:hover {
+  background-color: #4e9815; 
+  color: white;
+}
+button.btn:active{
+  background-color: #4e9815;
+  outline: none;
+  border-color: #ced4da;
+}
+.datecheck{
+  width: 1400px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+ 
+}
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  height: 470px;
+  width: 330px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.imgs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  display: inline-block;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  margin: 0 10px; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px; 
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.behind {
+  position: absolute;
+  top: 0;
+  left: 58%;
+  transform: translateX(-50%);
+  z-index: -1;
+  transform: rotate(30%);
+}
+.behind img{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  filter: blur(2px);
+}
+.frist {
+  box-shadow: 10px 0px 20px 10px rgba(10, 1, 1, 0.873); 
+  position: relative;
+  z-index: 1; 
+}
+
+.des a{
+  
+  color:#989898;
+  font-size: 19px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top:45px;
+  left :240px;
+}
+.des a:hover{
+  color: #ededed;
+}
+
+.des{
+  display: flex;
+  flex-direction: row;
+  align-items:flex-end;
+  justify-content: start;
+  position: relative;
+}
+.section2{
+  margin-left:70px;
+}
+.table{
+  color: #ccc;
+}
+.imgorder img{
+  height: 400px;
+}
+/* Style for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+}
+
+/* Style for the modal content */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Close button style */
+.close {
+  color: #fff;
+  font-size: 2em;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+/* Image order styling */
+.imgorder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.imgorder img {
+  margin: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 15px;
+
+}
+
+.imgorder img:hover {
+  transform: scale(1.1);
+}
+.items {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+width: 100%;
+}
+.modal-content {
+ margin-top: 100px;
+ object-fit: cover;
+}
+.footer{
+  background-color: #6fb936;
+}
+
