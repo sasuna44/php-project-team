@@ -7,11 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
     <title>AllUsers</title>
-    <script src="/js/createUsers.js"></script>
     
 </head>
 <style>
@@ -102,12 +100,13 @@ width: 18rem;
 border: 2px solid transparent;
 transition: border-color 0.4s ease;
 box-shadow: 2px 2px 3px #e0e5fec6; 
-background-image: linear-gradient(to bottom,transparent 85%,#28a92a70);
+background-image: linear-gradient(to bottom,transparent 85%,#414141);
+background-color: #989898;
 }
 .card:hover{
 border-color: #98989883;
 cursor: pointer;
-background-image: linear-gradient(to bottom,#98989883 80%,transparent);
+background-image: linear-gradient(to bottom,#ededed 80%,transparent);
 }
 .card-img-top {
 width: 100%;
@@ -125,14 +124,17 @@ justify-content: flex-start;
 width: 100%;
 margin: 0 1rem 0 0;
 box-shadow: 
-    3px 3px 2px #e0e5fec6,
-    -3px -3px 2px #e0e5fec6;
+    2px 2px 1px #e0e5fec6,
+    -3px -3px 1px #e0e5fec6;
+    border:none !important;
+    background-color: #989898;
 }
 
 .list-group li {
-color: #414141;
+color: #ededed;
 font-weight: bold;
-background-color: transparent;
+background-color: transparent;   
+ border:none !important;
 
 }
 .navbar {
@@ -159,7 +161,10 @@ align-items: baseline;
 margin:0.5rem 0 auto;
 height:2rem;   
 }
-
+.no-room,
+.no-ext{
+    color:red !important;
+}
 
 </style>
 
@@ -245,8 +250,8 @@ height:2rem;
                 echo '<ul class="list-group">';
                 echo '<li class="list-group-item">Email: ' . $row["user_email"] . '</li>';
                 echo '<li class="list-group-item">Role: ' . $row["role"] . '</li>';
-                echo '<li class="list-group-item">Room Number: ' . ($row["room_number"] ? $row["room_number"] : 'NULL') . '</li>';
-                echo '<li class="list-group-item">Ext Number: ' . ($row["ext_number"] ? $row["ext_number"] : 'NULL') . '</li>';
+                echo '<li class="list-group-item ' . ($row["room_number"] ? '' : 'no-room') . '">Room Number: ' . ($row["room_number"] ? $row["room_number"] : 'Not in Room') . '</li>';
+                echo '<li class="list-group-item ' . ($row["ext_number"] ? '' : 'no-ext') . '">Ext Number: ' . ($row["ext_number"] ? $row["ext_number"] : 'Not have Ext Number') . '</li>';
                 echo '</ul>';
                 
                 echo '<div class="btncontainer">';
