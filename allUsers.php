@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
     <title>AllUsers</title>
     <script src="/js/createUsers.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
+    
 </head>
 <style>
         :root {
@@ -42,6 +43,124 @@
     color: rgb(62, 62, 62);
     padding: 20px;
 }
+#add{
+    text-decoration: none;
+    color: #414141;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+#add:hover{
+    color:#28a92b;
+}
+
+
+.navbar-dark .navbar-brand {
+color: #ffffff;
+}
+.navbar-dark .navbar-nav .nav-link {
+color: #ffffff;
+}
+
+.navbar-brand {
+color: #ffffff;
+font-weight: bold;
+}
+
+.navbar-brand:hover {
+color: #28a92b;
+}
+
+.navbar-nav .nav-link {
+color: #ffffff;
+font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+color: #28a92b;
+}
+
+ul {
+list-style: none;
+display: flex;
+justify-content: space-between;
+}
+
+h3 {
+color: #1d1d1d;
+font-weight: bold;
+font-size: 3rem;
+}
+#allproduct{
+margin-top: 7rem;
+color: #414141;
+width:100%;
+text-align:center;
+}
+.card{
+margin:0.5rem;
+width: 18rem;
+border: 2px solid transparent;
+transition: border-color 0.4s ease;
+box-shadow: 2px 2px 3px #e0e5fec6; 
+background-image: linear-gradient(to bottom,transparent 85%,#28a92a70);
+}
+.card:hover{
+border-color: #98989883;
+cursor: pointer;
+background-image: linear-gradient(to bottom,#98989883 80%,transparent);
+}
+.card-img-top {
+width: 100%;
+height:20rem;
+margin:0.5rem 0 0 0 ;
+}
+
+#cardcontainer {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+
+}
+.list-group {
+width: 100%;
+margin: 0 1rem 0 0;
+box-shadow: 
+    3px 3px 2px #e0e5fec6,
+    -3px -3px 2px #e0e5fec6;
+}
+
+.list-group li {
+color: #414141;
+font-weight: bold;
+background-color: transparent;
+
+}
+.navbar {
+background-color: transparent !important;
+transition: background-color 0.4s ease;
+
+}
+.navbar-scrolled {
+background-color:#6fb936 !important;
+}
+.available {
+color: #28a92b;
+font-weight: bold;
+}
+
+.unavailable {
+color: red;
+font-weight: bold;
+}
+.btncontainer{
+display: flex;
+justify-content: space-evenly;
+align-items: baseline;
+margin:0.5rem 0 auto;
+height:2rem;   
+}
+
+
 </style>
 
 <body>

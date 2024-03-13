@@ -42,7 +42,7 @@
     color: rgb(62, 62, 62);
     padding: 20px;
 }
-/* #add{
+#add{
         text-decoration: none;
         color: #414141;
         font-weight: bold;
@@ -157,7 +157,7 @@ h3 {
     align-items: baseline;
     margin:0.5rem 0 auto;
     height:2rem;   
-} */
+}
 
 </style>
 <body>
