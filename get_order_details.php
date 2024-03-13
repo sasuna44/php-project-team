@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 // Connect to the database
 $connection = new PDO("mysql:host=localhost;dbname=php", "root", "1234");
-
+ 
 // Start the session
 session_start();
 

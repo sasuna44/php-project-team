@@ -1,6 +1,6 @@
 <?php
 // Establish database connection
-$connection = new PDO("mysql:host=localhost;dbname=php", "root", "1234");
+// $connection = new PDO("mysql:host=localhost;dbname=php", "root", "1234");
 
 // Fetch orders and their details from the database
 $orders_query = "SELECT orders.*, users.user_name 
